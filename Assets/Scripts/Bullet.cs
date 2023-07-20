@@ -23,8 +23,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
-        
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
+
+
     }
 
     private void DestroyWhenOffScreen()
@@ -34,7 +36,9 @@ public class Bullet : MonoBehaviour
         if (screenPosition.x < 0 || screenPosition.x > _camera.pixelWidth ||
             screenPosition.y < 0 || screenPosition.y > _camera.pixelHeight)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+
         }
     }
 }

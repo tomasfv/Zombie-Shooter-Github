@@ -37,7 +37,15 @@ public class Weapon : MonoBehaviour
         if(numberOfBullets > 0)
         {
             weaponAudio.PlayOneShot(shotSound, 0.3f);
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = BulletPool.instance.GetPooledObject();
+            if (bullet != null)
+            {
+                bullet.transform.position = firePoint.position;
+                bullet.transform.rotation = firePoint.rotation;
+                bullet.SetActive(true);
+            }
+            
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
             numberOfBullets--;
         }

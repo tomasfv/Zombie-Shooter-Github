@@ -12,12 +12,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float _rotationSpeed;
 
-    //[SerializeField]
-    //private float _enemyBoundsY;
-
-    //[SerializeField]
-    //private float _enemyBoundsX;
-
     [SerializeField]
     private int enemyHealth = 2;
 
@@ -60,8 +54,10 @@ public class EnemyMovement : MonoBehaviour
                 zombieSound.Play();
                 _speed = 0;
                 transform.position = new Vector2(transform.position.x, transform.position.y);
-                OnDied.Invoke();
-                Destroy(gameObject, 0.3f);
+                //OnDied.Invoke();
+                //Destroy(gameObject, 0.3f);
+                StartCoroutine(DestroyEnemy());
+
             }
 
         }   
@@ -125,28 +121,11 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    //private void SetBounds()
-    //{
-    //    if (transform.position.y > _enemyBoundsY)
-    //    {
-    //        transform.position = new Vector2(transform.position.x, _enemyBoundsY);
-    //    }
-    //    if (transform.position.y < -_enemyBoundsY)
-    //    {
-    //        transform.position = new Vector2(transform.position.x, -_enemyBoundsY);
-    //    }
-    //    if (transform.position.x > _enemyBoundsX)
-    //    {
-    //        transform.position = new Vector2(_enemyBoundsX, transform.position.y);
-    //    }
-    //    if (transform.position.x < -_enemyBoundsX)
-    //    {
-    //        transform.position = new Vector2(-_enemyBoundsX, transform.position.y);
-    //    }
+    IEnumerator DestroyEnemy()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameObject.SetActive(false);
 
-        //if(transform.position.x > exitBox.transform.position.x)
-        //{
-        //    Destroy(gameObject);
-        //}
-    //}
+    }
+
 }
