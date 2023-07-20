@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _speed;
+    private float _speed = 1.0f;
     
     [SerializeField]
     private float _rotationSpeed;
@@ -54,9 +54,9 @@ public class EnemyMovement : MonoBehaviour
                 zombieSound.Play();
                 _speed = 0;
                 transform.position = new Vector2(transform.position.x, transform.position.y);
-                //OnDied.Invoke();
-                //Destroy(gameObject, 0.3f);
-                StartCoroutine(DestroyEnemy());
+                OnDied.Invoke();
+                Destroy(gameObject, 0.3f);
+                //StartCoroutine(DestroyEnemy());
 
             }
 
@@ -67,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
@@ -121,11 +122,15 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    IEnumerator DestroyEnemy()
-    {
-        yield return new WaitForSeconds(0.3f);
-        gameObject.SetActive(false);
+    //IEnumerator DestroyEnemy()
+    //{
+    //    animator.SetBool("isDead", true);
+    //    zombieSound.Play();
+    //    _speed = 0;
+    //    transform.position = new Vector2(transform.position.x, transform.position.y);
+    //    yield return new WaitForSeconds(0.3f);
+    //    gameObject.SetActive(false);
 
-    }
+    //}
 
 }

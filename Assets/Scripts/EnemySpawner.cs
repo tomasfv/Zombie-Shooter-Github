@@ -51,14 +51,14 @@ public class EnemySpawner : MonoBehaviour
 
         if(_timeUntilSpawn <= 0 && spawnPos != _playerPos.position && _gameManager.enemiesInScene < _gameManager.enemiesInstancesLimit)
         {
-            //Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
-            GameObject enemy = EnemyPool.instance.GetPooledObject();
-            if (enemy != null)
-            {
-                enemy.transform.position = spawnPos;
-                //enemy.transform.rotation = Quaternion.identity;
-                enemy.SetActive(true);
-            }
+            Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
+            //GameObject enemy = EnemyPool.instance.GetPooledObject();
+            //if (enemy != null)
+            //{
+            //    enemy.transform.position = spawnPos;
+            //    enemy.transform.rotation = Quaternion.identity;
+            //    enemy.SetActive(true);
+            //}
             SetTimeUntilSpawn();
         }
     }
