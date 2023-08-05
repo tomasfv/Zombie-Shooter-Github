@@ -23,12 +23,13 @@ public class EnemyMovement : MonoBehaviour
     private float _changeDirectionCooldown;
 
     public GameObject graphics;
+    //public GameObject killsCounter;
     private Animator animator;
 
     public UnityEvent OnDied;
 
     private AudioSource zombieSound;
-
+    private GameManager _gameManager;
 
 
 
@@ -39,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
         _targetDirection = transform.up;
         animator = graphics.GetComponent<Animator>();
         zombieSound = GetComponent<AudioSource>();
+        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
 
     }
 
@@ -50,6 +52,8 @@ public class EnemyMovement : MonoBehaviour
 
             if(enemyHealth <= 0)
             {
+                _gameManager.numberOfKills++;
+                //killsCounter.GetComponent<KillsCounter>().numberOfKills++;
                 animator.SetBool("isDead", true);
                 zombieSound.Play();
                 _speed = 0;

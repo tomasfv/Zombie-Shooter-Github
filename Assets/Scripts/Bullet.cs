@@ -7,26 +7,19 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Camera _camera;
-    
-
-
     private void Awake()
     {
         _camera = Camera.main;
-
     }
 
     private void Update()
     {
         DestroyWhenOffScreen();        
     }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Destroy(gameObject);
         gameObject.SetActive(false);
-
-
     }
 
     private void DestroyWhenOffScreen()
@@ -38,7 +31,6 @@ public class Bullet : MonoBehaviour
         {
             //Destroy(gameObject);
             gameObject.SetActive(false);
-
         }
     }
 }

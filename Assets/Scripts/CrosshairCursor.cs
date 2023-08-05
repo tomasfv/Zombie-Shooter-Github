@@ -12,7 +12,7 @@ public class CrosshairCursor : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = mouseCursorPos;

@@ -76,6 +76,7 @@ MonoBehaviour:
   _rotationSpeed: 100
   enemyHealth: 2
   graphics: {fileID: 3625490839612096467}
+  killsCounter: {fileID: 2991741037740463483, guid: fbcdedaf1a924f64b9d90d8a417c9bb2, type: 3}
   OnDied:
     m_PersistentCalls:
       m_Calls:
@@ -104,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAwarenessDistance: 15
-  _maxDistance: 30
 --- !u!58 &3526299377902725034
 CircleCollider2D:
   m_ObjectHideFlags: 0

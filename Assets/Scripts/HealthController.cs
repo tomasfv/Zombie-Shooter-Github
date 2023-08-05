@@ -13,6 +13,7 @@ public class HealthController : MonoBehaviour
 
     public GameObject graphics;
     public GameObject gameOverUI;
+    public GameObject Crosshair;
 
     private Animator animator;
     public AudioSource playerAudio;
@@ -64,6 +65,8 @@ public class HealthController : MonoBehaviour
             animator.SetBool("playerDead", true);
             OnDied.Invoke();
             gameOverUI.SetActive(true);
+            Crosshair.SetActive(false);
+            Cursor.visible = true;
         }
         else
         {

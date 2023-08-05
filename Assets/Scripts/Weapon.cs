@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public GameObject shoot;
     public float fireForce = 20f;
     public float numberOfBullets = 12f;
     public TextMeshProUGUI bulletsText;
@@ -20,6 +21,7 @@ public class Weapon : MonoBehaviour
     {
         bulletsText.text = "Bullets: " + numberOfBullets;
         weaponAudio = GetComponent<AudioSource>();
+        
     }
     private void Update()
     {
@@ -37,6 +39,7 @@ public class Weapon : MonoBehaviour
         if(numberOfBullets > 0)
         {
             weaponAudio.PlayOneShot(shotSound, 0.3f);
+            StartCoroutine(ShootGraphics());
             //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             GameObject bullet = BulletPool.instance.GetPooledObject();
             if (bullet != null)
@@ -54,6 +57,13 @@ public class Weapon : MonoBehaviour
             weaponAudio.PlayOneShot(triggerSound, 0.1f);
         }
 
+    }
+
+    IEnumerator ShootGraphics()
+    {
+        shoot.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        shoot.SetActive(false);
     }
 
    

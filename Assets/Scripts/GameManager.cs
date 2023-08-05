@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,12 +9,14 @@ public class GameManager : MonoBehaviour
     public int enemiesInScene;
     public int enemiesInstancesLimit;
     public int nextScene;
+    public float numberOfKills = 0f;
+    public TextMeshProUGUI killsText;
     private GameObject[] getCount;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        killsText.text = "Kills: " + numberOfKills;
     }
 
     // Update is called once per frame
@@ -21,16 +24,28 @@ public class GameManager : MonoBehaviour
     {
         getCount = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesInScene = getCount.Length;
+        killsText.text = "Kills: " + numberOfKills;
     }
 
     public void RestartGame()
     {
+        Invoke("MyLoadingRestartFunction", 1.5f);
+    }
 
+    void MyLoadingRestartFunction()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     public void StartGame()
     {
+        Invoke("MyLoadingStartFunction", 1.5f);
+    }
+
+    void MyLoadingStartFunction()
+    {
         SceneManager.LoadScene(nextScene);
+
     }
 }
