@@ -40,7 +40,6 @@ public class Weapon : MonoBehaviour
         {
             weaponAudio.PlayOneShot(shotSound, 0.3f);
             StartCoroutine(ShootGraphics());
-            //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             GameObject bullet = BulletPool.instance.GetPooledObject();
             if (bullet != null)
             {

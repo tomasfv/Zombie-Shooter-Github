@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
 
     
 
-    // Start is called before the first frame update
     void Awake()
     {
         SetTimeUntilSpawn();
@@ -43,7 +42,6 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 spawnPos = new Vector3(Random.Range(_minSpawnRangeX, _maxSpawnRangeX), Random.Range(_minSpawnRangeY, _maxSpawnRangeY), 0);
@@ -52,13 +50,6 @@ public class EnemySpawner : MonoBehaviour
         if(_timeUntilSpawn <= 0 && spawnPos != _playerPos.position && _gameManager.enemiesInScene < _gameManager.enemiesInstancesLimit)
         {
             Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
-            //GameObject enemy = EnemyPool.instance.GetPooledObject();
-            //if (enemy != null)
-            //{
-            //    enemy.transform.position = spawnPos;
-            //    enemy.transform.rotation = Quaternion.identity;
-            //    enemy.SetActive(true);
-            //}
             SetTimeUntilSpawn();
         }
     }

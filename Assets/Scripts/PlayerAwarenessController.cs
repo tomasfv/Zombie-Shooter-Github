@@ -10,8 +10,7 @@ public class PlayerAwarenessController : MonoBehaviour
 
     [SerializeField]
     private float _playerAwarenessDistance;
-    //[SerializeField]
-    //private float _maxDistance;
+   
     
     private Transform _player;
 
@@ -21,10 +20,8 @@ public class PlayerAwarenessController : MonoBehaviour
         _player = FindObjectOfType<PlayerController>().transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //_player = FindObjectOfType<PlayerController>().transform;
         Vector2 enemyToPlayerVector = _player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
@@ -36,9 +33,5 @@ public class PlayerAwarenessController : MonoBehaviour
             AwareOfPlayer = false;
         }
 
-        //if(enemyToPlayerVector.magnitude > _maxDistance)
-        //{
-        //    Destroy(gameObject, 5.0f);
-        //}
     }
 }

@@ -23,7 +23,6 @@ public class EnemyMovement : MonoBehaviour
     private float _changeDirectionCooldown;
 
     public GameObject graphics;
-    //public GameObject killsCounter;
     private Animator animator;
 
     public UnityEvent OnDied;
@@ -53,14 +52,12 @@ public class EnemyMovement : MonoBehaviour
             if(enemyHealth <= 0)
             {
                 _gameManager.numberOfKills++;
-                //killsCounter.GetComponent<KillsCounter>().numberOfKills++;
                 animator.SetBool("isDead", true);
                 zombieSound.Play();
                 _speed = 0;
                 transform.position = new Vector2(transform.position.x, transform.position.y);
                 OnDied.Invoke();
                 Destroy(gameObject, 0.3f);
-                //StartCoroutine(DestroyEnemy());
 
             }
 
@@ -68,14 +65,12 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
-        //SetBounds();
         
     }
 
@@ -126,15 +121,5 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    //IEnumerator DestroyEnemy()
-    //{
-    //    animator.SetBool("isDead", true);
-    //    zombieSound.Play();
-    //    _speed = 0;
-    //    transform.position = new Vector2(transform.position.x, transform.position.y);
-    //    yield return new WaitForSeconds(0.3f);
-    //    gameObject.SetActive(false);
-
-    //}
 
 }

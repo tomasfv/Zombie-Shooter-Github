@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI keysText;
     public int numberOfKeys = 0;
     
-
     Vector2 moveDirection;
     Vector2 mousePosition;
 
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
