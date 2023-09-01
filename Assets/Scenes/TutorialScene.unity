@@ -606,8 +606,9 @@ MonoBehaviour:
   enemiesInScene: 0
   enemiesInstancesLimit: 0
   nextScene: 2
+  isTitleScene: 1
   numberOfKills: 0
-  killsText: {fileID: 0}
+  killsText: {fileID: 1346558650}
 --- !u!4 &1189937150
 Transform:
   m_ObjectHideFlags: 0

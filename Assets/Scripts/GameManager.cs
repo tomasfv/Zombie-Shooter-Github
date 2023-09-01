@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int enemiesInScene;
     public int enemiesInstancesLimit;
     public int nextScene;
+    public bool isTitleScene = false;
     public float numberOfKills = 0f;
     public TextMeshProUGUI killsText;
     private GameObject[] getCount;
@@ -16,7 +17,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        killsText.text = "Kills: " + numberOfKills;
+        if (isTitleScene == false)
+        {
+
+            killsText.text = "Kills: " + numberOfKills;
+            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().StopMusic();
+
+        }
+        //else if(isTitleScene) 
+        //{
+        //    GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
+        //}
     }
 
     // Update is called once per frame
@@ -24,7 +35,13 @@ public class GameManager : MonoBehaviour
     {
         getCount = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesInScene = getCount.Length;
-        killsText.text = "Kills: " + numberOfKills;
+        if(isTitleScene == false)
+        {
+            killsText.text = "Kills: " + numberOfKills;
+           
+
+        }
+        
     }
 
     public void RestartGame()
