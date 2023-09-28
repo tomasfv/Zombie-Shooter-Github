@@ -7,11 +7,20 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     private float _damageAmount;
 
+    private GameObject player;
+    private HealthController healthController;
+
+    private void Start()
+    {
+       player = GameObject.FindGameObjectWithTag("Player");
+       healthController = player.GetComponent<HealthController>(); 
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>())
+        
+        if(collision.gameObject == player)
         {
-            var healthController = collision.gameObject.GetComponent<HealthController>();
             healthController.TakeDamage(_damageAmount);
         }
     }
